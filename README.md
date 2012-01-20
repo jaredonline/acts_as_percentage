@@ -9,7 +9,7 @@ Rails 3.1.x
 Allows you to store percent values as an integer.  
 
     class ProgressBar < ActiveRecord::Base
-    percentage :completed
+        percentage :completed
     end
 
 
