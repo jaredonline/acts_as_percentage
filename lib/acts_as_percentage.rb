@@ -38,8 +38,7 @@ module ActsAsPercentage #:nodoc:
         end
         
         define_method("#{attribute}=") do |percentage|
-          percentage = Float(percentage) rescue nil # attempt to catch strings and turn them into Floats
-          basis_point = percentage ? (percentage * 100).round : nil
+          basis_point = percentage ? (Float(percentage) * 100).round : nil
           self.__send__("#{basis_point_attribute}=", basis_point)
         end
       end
