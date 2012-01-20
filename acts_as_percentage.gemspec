@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Jared McFarland"]
   s.email       = ["jared.online@gmail.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = "Adds simple percentage and ratio helpers to ActiveRecord and allows percents to be stored as an Integer"
+  s.description = "Because most percentages only need to be accurate to two decimals, this gem has you store them as basis points and does the conversion for you."
 
   s.rubyforge_project = "acts_as_percentage"
 
