@@ -29,6 +29,10 @@ describe "acts_as_percentage" do
     progress_bar.completed_ratio.should be_nil
   end
   
+  it "allows setting with a string" do
+    lambda { ProgressBar.create(:completed => "59.87") }.should_not raise_error
+  end
+  
   it "raises an error if an unspecified column is present" do
     lambda { class ProgressBar < ActiveRecord::Base; percentage :foo; end }.should raise_error(ArgumentError)
   end
