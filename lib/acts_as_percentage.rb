@@ -26,21 +26,20 @@ module ActsAsPercentage #:nodoc:
     # 
     def percentage(*attributes)
       attributes.each do |attribute|
-        raise ArgumentError.new("#{self} does not respond to #{attribute}_basis_point") unless self.column_names.include?("#{attribute}_basis_point")
-        
-        basis_point_method_name = "#{attribute}_basis_point"
+        basis_point_attribute = "#{attribute}_basis_point"
+        raise ArgumentError.new("#{self} does not respond to #{basis_point_attribute}") unless self.column_names.include?("#{basis_point_attribute}")
         
         define_method("#{attribute}") do
-          self.__send__(basis_point_method_name) / 100.0 rescue nil
+          self.__send__(basis_point_attribute) / 100.0 rescue nil
         end
         
         define_method("#{attribute}_ratio") do
-          self.__send__(basis_point_method_name) / 10000.0 rescue nil
+          self.__send__(basis_point_attribute) / 10000.0 rescue nil
         end
         
         define_method("#{attribute}=") do |percentage|
           basis_point = percentage ? (percentage * 100).round : nil
-          self.__send__("#{basis_point_method_name}=", basis_point)
+          self.__send__("#{basis_point_attribute}=", basis_point)
         end
       end
     end
